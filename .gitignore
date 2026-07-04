@@ -30,3 +30,8 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# CI workflow excluded from push (gh token lacks `workflow` scope).
+# Deploy is done via branch-based GitHub Pages (out/ -> gh-pages).
+# A ready-to-use Actions workflow is kept at docs/github-pages-deploy.yml.txt
+.github/

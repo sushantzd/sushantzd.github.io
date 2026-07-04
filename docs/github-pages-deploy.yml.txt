@@ -1,0 +1,59 @@
+# Optional: GitHub Actions workflow for automatic GitHub Pages deploys.
+#
+# This repo is currently deployed via a branch-based publish (built `out/`
+# pushed to the `gh-pages` branch). If you'd rather have GitHub build & deploy
+# automatically on every push to `main`, do this ONE-TIME setup:
+#
+#   1. Grant your GitHub CLI the workflow scope:  gh auth refresh -s workflow
+#   2. Copy this file to  .github/workflows/deploy.yml
+#   3. Add a repo secret named  NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY  (your Web3Forms key)
+#   4. Settings → Pages → Source → "GitHub Actions"
+#   5. git add .github && git commit -m "ci: pages deploy" && git push
+#
+# --------------------------------------------------------------------------
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
