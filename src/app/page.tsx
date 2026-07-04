@@ -1,5 +1,8 @@
 import { personal } from "@/data/resume";
 import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
+import Experience from "@/components/sections/Experience";
 
 /**
  * FOUNDATION home page.
@@ -24,27 +27,6 @@ interface PlaceholderSection {
 }
 
 const sections: PlaceholderSection[] = [
-  {
-    id: "about",
-    idx: "02",
-    eyebrow: "/ About",
-    title: "Engineering intelligence into real-world systems.",
-    sub: "About section — built in a later task.",
-  },
-  {
-    id: "skills",
-    idx: "03",
-    eyebrow: "/ Capabilities",
-    title: "The stack behind the systems",
-    sub: "Skills section — built in a later task.",
-  },
-  {
-    id: "experience",
-    idx: "04",
-    eyebrow: "/ Experience",
-    title: "A track record of shipping",
-    sub: "Experience timeline — built in a later task.",
-  },
   {
     id: "projects",
     idx: "05",
@@ -91,6 +73,13 @@ export default function Home() {
           so the Navbar brand anchor and scroll targets resolve. */}
       <Hero />
 
+      {/* Real content sections (replacing their former placeholders). */}
+      <About />
+      <Skills />
+      <Experience />
+
+      {/* Remaining sections are still titled placeholders (owned by later
+          tasks); their ids stay stable so Navbar anchors keep resolving. */}
       {sections.map((s) => (
         <Placeholder key={s.id} {...s} />
       ))}
