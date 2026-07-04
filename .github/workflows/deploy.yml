@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow GITHUB_TOKEN to deploy to Pages + verify deployment origin
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One concurrent deploy; let in-progress finish
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Configure Pages
+        # enablement:true turns on GitHub Pages (Actions source) on first run.
+        # No static_site_generator → served at domain root (user site, no basePath).
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Build (Next.js static export)
+        run: npm run build
+        env:
+          # Paste your free Web3Forms key as a repo secret of this exact name
+          # (Settings → Secrets and variables → Actions) to make the contact form live.
+          NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
