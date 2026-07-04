@@ -242,6 +242,145 @@ section {
 }
 
 /* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 120px;
+  overflow: hidden;
+}
+#neural-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  top: 40%;
+  left: 60%;
+  width: 640px;
+  height: 640px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  background: radial-gradient(circle, rgba(46, 107, 255, 0.22), transparent 62%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  width: 100%;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 30px;
+}
+.dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 10px var(--signal);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.hero h1 {
+  font-size: clamp(3.2rem, 10vw, 8.4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  margin-bottom: 8px;
+}
+.hero .role {
+  font-family: var(--font-mono);
+  letter-spacing: 0.35em;
+  font-size: clamp(0.72rem, 1.5vw, 0.92rem);
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 22px;
+  display: block;
+}
+.hero .lead {
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  max-width: 540px;
+  color: var(--ink-mid);
+  margin: 26px 0 40px;
+}
+.hero .lead b {
+  color: var(--ink-hi);
+  font-weight: 600;
+}
+.scroll-cue {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink-low);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.scroll-cue .rail {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(var(--cyan), transparent);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-cue .rail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: var(--cyan);
+  animation: drop 1.8s var(--ease) infinite;
+}
+@keyframes drop {
+  0% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(44px);
+  }
+}
+
+/* ============================================================
    Custom cursor
    ============================================================ */
 .cursor-dot,
@@ -493,6 +632,14 @@ footer .mono {
   .nav-toggle {
     display: flex;
     z-index: 1002;
+  }
+}
+
+@media (max-width: 560px) {
+  /* CTAs stretch full-width and centre their label on narrow screens */
+  .cta-row .btn {
+    flex: 1;
+    justify-content: center;
   }
 }
 

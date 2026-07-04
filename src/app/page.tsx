@@ -1,4 +1,5 @@
 import { personal } from "@/data/resume";
+import Hero from "@/components/sections/Hero";
 
 /**
  * FOUNDATION home page.
@@ -86,36 +87,9 @@ function Placeholder({ id, idx, eyebrow, title, sub }: PlaceholderSection) {
 export default function Home() {
   return (
     <main>
-      {/* Hero — replaced by the canvas neural field + Hero component next task.
-          Kept full-height and dark so the foundation already looks intentional. */}
-      <section
-        id="hero"
-        style={{
-          minHeight: "100vh",
-          display: "flex",
-          alignItems: "center",
-          paddingTop: "120px",
-        }}
-      >
-        <div className="wrap">
-          <div className="eyebrow">
-            <span className="mono idx">01</span>
-            <span className="mono">/ Intro</span>
-            <span className="line" />
-          </div>
-          <span className="mono" style={{ display: "block", color: "var(--cyan)", marginBottom: "18px" }}>
-            {personal.role}
-          </span>
-          <h1 style={{ fontSize: "clamp(3.2rem,10vw,8.4rem)", letterSpacing: "-.035em" }}>
-            Sushant
-            <br />
-            <span className="grad-tri-text">Choudhary</span>
-          </h1>
-          <p className="section-sub" style={{ marginTop: "26px" }}>
-            {personal.tagline}
-          </p>
-        </div>
-      </section>
+      {/* Hero — canvas neural field + animated intro. Keeps id="hero"
+          so the Navbar brand anchor and scroll targets resolve. */}
+      <Hero />
 
       {sections.map((s) => (
         <Placeholder key={s.id} {...s} />
