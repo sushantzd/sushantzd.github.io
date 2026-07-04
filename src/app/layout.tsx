@@ -6,7 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import CustomCursor from "@/components/ui/CustomCursor";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 
-const SITE_URL = "https://sushantchoudhary.dev";
+const SITE_URL = "https://sushantzd.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,6 +25,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: personal.name }],
   creator: personal.name,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: SITE_URL,

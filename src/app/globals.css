@@ -116,6 +116,21 @@ body::after {
   mix-blend-mode: overlay;
 }
 
+/* ---------- keyboard focus ---------- */
+/* Visible focus ring for keyboard users only (mouse/touch stay clean).
+   Applies to every interactive control — links, buttons, form fields. */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+/* Form fields carry their own richer focus treatment below, so suppress the
+   generic ring on them to avoid a double outline. */
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  outline: none;
+}
+
 /* ---------- typography helpers ---------- */
 h1,
 h2,
