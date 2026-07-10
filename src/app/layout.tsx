@@ -10,8 +10,8 @@ const SITE_URL = "https://sushantzd.github.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Sushant Choudhary — AI Engineer",
-  description: personal.tagline,
+  title: "Sushant Choudhary — AI & Full-Stack Engineer | Freelance",
+  description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps and native mobile. Available for freelance projects.",
   keywords: [
     "AI Engineer",
     "Machine Learning",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: "Sushant Choudhary — AI Engineer",
-    description: personal.tagline,
+    title: "Sushant Choudhary — AI & Full-Stack Engineer | Freelance",
+    description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps and native mobile. Available for freelance projects.",
     siteName: "Sushant Choudhary — SYNAPSE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sushant Choudhary — AI Engineer",
-    description: personal.tagline,
+    title: "Sushant Choudhary — AI & Full-Stack Engineer | Freelance",
+    description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps and native mobile. Available for freelance projects.",
   },
   robots: { index: true, follow: true },
 };

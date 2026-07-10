@@ -53,7 +53,7 @@ export default function Experience() {
     <section id="experience">
       <div className="wrap">
         <motion.div className="eyebrow" {...revealProps(0)}>
-          <span className="mono idx">04</span>
+          <span className="mono idx">05</span>
           <span className="mono">/ Experience</span>
           <span className="line" />
         </motion.div>

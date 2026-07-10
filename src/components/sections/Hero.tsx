@@ -57,11 +57,11 @@ export default function Hero() {
         animate={reduced ? undefined : "show"}
       >
         <motion.span className="hero-badge" variants={reduced ? undefined : item}>
-          <span className="dot-live" aria-hidden="true" /> Available for AI Engineering roles
+          <span className="dot-live" aria-hidden="true" /> Available for freelance &amp; AI engineering work
         </motion.span>
 
         <motion.span className="role" variants={reduced ? undefined : item}>
-          AI&nbsp;·&nbsp;ML&nbsp;·&nbsp;Generative AI Engineer
+          AI&nbsp;·&nbsp;Full-Stack&nbsp;·&nbsp;Generative AI Engineer
         </motion.span>
 
         <motion.h1 variants={reduced ? undefined : item}>
@@ -71,8 +71,9 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p className="lead" variants={reduced ? undefined : item}>
-          I build <b>LLM systems</b>, <b>RAG pipelines</b> and <b>AI automation</b> that ship to
-          production — from firewall log intelligence to enterprise knowledge assistants.
+          I design and ship <b>complete products</b> — <b>AI systems</b>, <b>full-stack web apps</b>{" "}
+          and <b>native mobile</b> — from LLM automation and RAG pipelines to enterprise dashboards
+          and digital-signage platforms.
         </motion.p>
 
         <motion.div className="cta-row" variants={reduced ? undefined : item}>
@@ -88,7 +89,7 @@ export default function Hero() {
             Download Résumé ↓
           </MagneticButton>
           <MagneticButton href="#contact" className="btn btn-ghost" enabled={magnetic}>
-            Contact Me
+            Hire Me
           </MagneticButton>
         </motion.div>
       </motion.div>

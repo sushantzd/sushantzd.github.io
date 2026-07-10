@@ -147,7 +147,7 @@ export default function Contact() {
           style={{ justifyContent: "center" }}
           {...revealProps(0)}
         >
-          <span className="mono idx">08</span>
+          <span className="mono idx">09</span>
           <span className="mono">/ Contact</span>
         </motion.div>
 
@@ -157,8 +157,8 @@ export default function Contact() {
         </motion.h2>
 
         <motion.p className="sub" {...revealProps(2)}>
-          Open to AI Engineering, ML and Generative AI roles. Reach out — I
-          usually reply within a day.
+          Open to freelance projects and AI / full-stack engineering work. Tell me what you want to
+          build — I usually reply within a day.
         </motion.p>
 
         <motion.form

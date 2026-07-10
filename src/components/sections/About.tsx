@@ -71,10 +71,12 @@ export default function About() {
           </motion.p>
 
           <motion.p {...revealProps(3)}>
-            Today I build production AI at <span className="hl">Modi Enterprise</span> — automating
-            firewall log intelligence, customer feedback processing and real-time alerting with
-            Python, LangChain and workflow orchestration. My work spans{" "}
-            <span className="hl">RAG systems, NLP, backend APIs</span> and the full ML lifecycle.
+            I build production AI in enterprise operations — automating log intelligence, customer
+            feedback processing and real-time alerting — and I ship the full product around it:{" "}
+            <span className="hl">React / Next.js front-ends, FastAPI and Node back-ends</span>,{" "}
+            <span className="hl">SQL data platforms</span> and even{" "}
+            <span className="hl">native Android</span>. Available for <span className="hl">freelance</span>{" "}
+            projects end-to-end.
           </motion.p>
         </div>
 

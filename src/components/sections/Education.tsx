@@ -49,7 +49,7 @@ export default function Education() {
     <section id="education">
       <div className="wrap">
         <motion.div className="eyebrow" {...revealProps(0)}>
-          <span className="mono idx">06</span>
+          <span className="mono idx">07</span>
           <span className="mono">/ Education</span>
           <span className="line" />
         </motion.div>
@@ -84,7 +84,7 @@ export default function Education() {
           style={{ marginTop: 70 }}
           {...revealProps(0)}
         >
-          <span className="mono idx">07</span>
+          <span className="mono idx">08</span>
           <span className="mono">/ Achievements</span>
           <span className="line" />
         </motion.div>
