@@ -1238,3 +1238,44 @@ footer .mono {
     filter: none;
   }
 }
+
+/* ============================================================
+   Services
+   ============================================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 44px;
+}
+.service-card {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 232, 255, 0.28);
+  box-shadow: 0 14px 44px rgba(56, 232, 255, 0.12);
+}
+.service-card h3 {
+  font-size: 1.12rem;
+  color: var(--ink-hi);
+}
+.service-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-low);
+}
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

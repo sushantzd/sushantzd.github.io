@@ -305,6 +305,37 @@ export const projects: Project[] = [
   },
 ];
 
+export const services: ServiceEntry[] = [
+  {
+    title: "AI & LLM Systems",
+    glyph: "✦",
+    icon: "Sparkles",
+    description:
+      "RAG assistants, LLM automation, multi-model pipelines and AI-powered internal tools — designed, built and shipped to production.",
+  },
+  {
+    title: "Full-Stack Web Apps",
+    glyph: "▥",
+    icon: "Layers",
+    description:
+      "End-to-end platforms with React / Next.js front-ends, secure auth, dashboards and REST + SQL back-ends.",
+  },
+  {
+    title: "Automation & Data",
+    glyph: "⚡",
+    icon: "Zap",
+    description:
+      "Workflow automation, data pipelines, reconciliation systems and reporting that remove hours of manual work.",
+  },
+  {
+    title: "Mobile & Signage",
+    glyph: "▢",
+    icon: "Smartphone",
+    description:
+      "Native Android apps and digital-signage platforms — web CMS plus on-device players with offline support.",
+  },
+];
+
 export const education: EducationEntry[] = [
   {
     years: "2022 — 2025",
