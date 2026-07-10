@@ -58,8 +58,8 @@ export default function Skills() {
         </motion.h2>
 
         <motion.p className="section-sub" {...revealProps(2)}>
-          A full-spectrum AI toolkit — from raw Python and SQL to LLM orchestration, RAG retrieval
-          and production backends.
+          A full-spectrum toolkit — from LLM orchestration, RAG and computer vision to full-stack
+          web, native mobile and production backends.
         </motion.p>
 
         <div className="skills-grid">

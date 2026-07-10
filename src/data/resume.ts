@@ -47,7 +47,10 @@ export type LucideIconName =
   | "Zap"
   | "Database"
   | "Cloud"
-  | "Settings2";
+  | "Settings2"
+  | "Layers"
+  | "Smartphone"
+  | "Rocket";
 
 export interface SkillGroup {
   title: string;
@@ -73,8 +76,25 @@ export interface Project {
   title: string;
   description: string;
   tech: string[];
-  github: string;
+  /** public repo link; omit for private/NDA work */
+  github?: string;
   caseStudy?: string;
+  /** short label rendered as a pill, e.g. "Enterprise · Private", "Web + Mobile" */
+  tag?: string;
+}
+
+export interface ServiceEntry {
+  title: string;
+  glyph: string;
+  icon: LucideIconName;
+  description: string;
+}
+
+export interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  company?: string;
 }
 
 export interface EducationEntry {
@@ -105,7 +125,7 @@ export interface NavLink {
 
 export const personal: Personal = {
   name: "Sushant Choudhary",
-  role: "AI · ML · Generative AI Engineer",
+  role: "AI · Full-Stack · Generative AI Engineer",
   tagline:
     "I build LLM systems, RAG pipelines and AI automation that ship to production — from firewall log intelligence to enterprise knowledge assistants.",
   email: "sushantchoudhary912@gmail.com",
@@ -123,7 +143,7 @@ export const personal: Personal = {
 
 export const stats: Stat[] = [
   { value: "1+", label: "Years shipping production AI", target: 1, decimals: 0, suffix: "+" },
-  { value: "2", label: "Flagship LLM systems built", target: 2, decimals: 0, suffix: "" },
+  { value: "7", label: "Production systems shipped", target: 7, decimals: 0, suffix: "" },
   { value: "4", label: "Professional roles across AI & data", target: 4, decimals: 0, suffix: "" },
   { value: "8.84", label: "Academic CGPA (Diploma)", target: 8.84, decimals: 2, suffix: "" },
 ];
@@ -133,7 +153,7 @@ export const skills: SkillGroup[] = [
     title: "Languages",
     glyph: "⌘",
     icon: "Command",
-    items: ["Python", "SQL"],
+    items: ["Python", "SQL", "JavaScript", "TypeScript", "Kotlin"],
   },
   {
     title: "AI / ML",
@@ -155,10 +175,37 @@ export const skills: SkillGroup[] = [
     title: "LLM & GenAI",
     glyph: "✦",
     icon: "Sparkles",
-    items: ["LLMs", "Generative AI", "RAG", "Prompt Engineering", "LLM Automation"],
+    items: [
+      "LLMs",
+      "Generative AI",
+      "RAG",
+      "Prompt Engineering",
+      "LLM Automation",
+      "Azure OpenAI",
+      "Google Gemini",
+      "Multi-Model Orchestration",
+    ],
   },
   {
-    title: "Frameworks",
+    title: "Frontend",
+    glyph: "▥",
+    icon: "Layers",
+    items: ["React", "Next.js", "Vue.js", "Tailwind CSS", "shadcn/ui", "Radix UI"],
+  },
+  {
+    title: "Backend & APIs",
+    glyph: "⚡",
+    icon: "Zap",
+    items: ["FastAPI", "Node.js", "Express", "Flask", "REST APIs", "NextAuth", "Streamlit"],
+  },
+  {
+    title: "Mobile",
+    glyph: "▢",
+    icon: "Smartphone",
+    items: ["Kotlin", "Android", "Jetpack Compose", "ExoPlayer"],
+  },
+  {
+    title: "ML Frameworks",
     glyph: "▤",
     icon: "LayoutGrid",
     items: [
@@ -174,22 +221,16 @@ export const skills: SkillGroup[] = [
     ],
   },
   {
-    title: "Backend & APIs",
-    glyph: "⚡",
-    icon: "Zap",
-    items: ["FastAPI", "REST APIs", "Streamlit", "React"],
-  },
-  {
     title: "Databases",
     glyph: "▦",
     icon: "Database",
-    items: ["PostgreSQL", "MySQL", "SQL", "Vector Databases", "ChromaDB"],
+    items: ["PostgreSQL", "MySQL", "SQL Server", "SQLite", "Vector Databases", "ChromaDB"],
   },
   {
     title: "Cloud / DevOps",
     glyph: "☁",
     icon: "Cloud",
-    items: ["Docker", "Git"],
+    items: ["Docker", "Git", "AWS S3", "Vite"],
   },
   {
     title: "Tools & LLM Ops",
@@ -302,6 +343,7 @@ export const achievements: Achievement[] = [
 export const navLinks: NavLink[] = [
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
+  { label: "Services", href: "#services" },
   { label: "Experience", href: "#experience" },
   { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
