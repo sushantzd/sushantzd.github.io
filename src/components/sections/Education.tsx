@@ -67,6 +67,11 @@ export default function Education() {
             >
               <span className="yr">{entry.years}</span>
               <h3>{entry.title}</h3>
+              {entry.honors && (
+                <div className="honors">
+                  <span aria-hidden="true">✦</span> {entry.honors}
+                </div>
+              )}
               <div className="deg">{entry.institution}</div>
               <div className="meta">{entry.meta}</div>
             </motion.div>
@@ -85,21 +90,44 @@ export default function Education() {
         </motion.div>
 
         <div className="certs">
-          {achievements.map((cert, i) => (
-            <motion.div
-              key={cert.title}
-              className="cert glass"
-              {...revealProps(i + 1)}
-            >
-              <div className="badge" aria-hidden="true">
-                {cert.glyph}
-              </div>
-              <div>
-                <h4>{cert.title}</h4>
-                <p>{cert.description}</p>
-              </div>
-            </motion.div>
-          ))}
+          {achievements.map((cert, i) => {
+            const inner = (
+              <>
+                <div className="badge" aria-hidden="true">
+                  {cert.glyph}
+                </div>
+                <div>
+                  <h4>{cert.title}</h4>
+                  <p>{cert.description}</p>
+                  {cert.href && (
+                    <span className="cert-cta">View certificate ↗</span>
+                  )}
+                </div>
+              </>
+            );
+
+            return cert.href ? (
+              <motion.a
+                key={cert.title}
+                href={cert.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cert glass cert-link"
+                data-cursor
+                {...revealProps(i + 1)}
+              >
+                {inner}
+              </motion.a>
+            ) : (
+              <motion.div
+                key={cert.title}
+                className="cert glass"
+                {...revealProps(i + 1)}
+              >
+                {inner}
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

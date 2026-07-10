@@ -275,6 +275,15 @@ export default function Contact() {
           >
             ◔ GitHub ↗
           </a>
+          <a
+            href={personal.socials.hackerrank}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social"
+            data-cursor
+          >
+            ⌁ HackerRank ↗
+          </a>
           <a href={`mailto:${personal.email}`} className="social" data-cursor>
             ✉ Email ↗
           </a>

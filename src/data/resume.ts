@@ -82,12 +82,16 @@ export interface EducationEntry {
   title: string;
   institution: string;
   meta: string;
+  /** optional honours specialization, rendered as a highlighted badge */
+  honors?: string;
 }
 
 export interface Achievement {
   glyph: string;
   title: string;
   description: string;
+  /** optional external proof link (e.g. HackerRank badge, certificate) */
+  href?: string;
 }
 
 export interface NavLink {
@@ -120,7 +124,7 @@ export const personal: Personal = {
 export const stats: Stat[] = [
   { value: "1+", label: "Years shipping production AI", target: 1, decimals: 0, suffix: "+" },
   { value: "2", label: "Flagship LLM systems built", target: 2, decimals: 0, suffix: "" },
-  { value: "3", label: "Professional roles across AI & data", target: 3, decimals: 0, suffix: "" },
+  { value: "4", label: "Professional roles across AI & data", target: 4, decimals: 0, suffix: "" },
   { value: "8.84", label: "Academic CGPA (Diploma)", target: 8.84, decimals: 2, suffix: "" },
 ];
 
@@ -135,7 +139,17 @@ export const skills: SkillGroup[] = [
     title: "AI / ML",
     glyph: "◈",
     icon: "Brain",
-    items: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision", "Transformers"],
+    items: [
+      "Machine Learning",
+      "Deep Learning",
+      "NLP",
+      "Computer Vision",
+      "Transformers",
+      "OpenCV",
+      "Statistics",
+      "Feature Engineering",
+      "EDA",
+    ],
   },
   {
     title: "LLM & GenAI",
@@ -147,7 +161,17 @@ export const skills: SkillGroup[] = [
     title: "Frameworks",
     glyph: "▤",
     icon: "LayoutGrid",
-    items: ["PyTorch", "TensorFlow", "scikit-learn", "Hugging Face", "XGBoost", "LangChain"],
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "scikit-learn",
+      "Hugging Face",
+      "XGBoost",
+      "LangChain",
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+    ],
   },
   {
     title: "Backend & APIs",
@@ -159,7 +183,7 @@ export const skills: SkillGroup[] = [
     title: "Databases",
     glyph: "▦",
     icon: "Database",
-    items: ["PostgreSQL", "SQL", "Vector Databases", "ChromaDB"],
+    items: ["PostgreSQL", "MySQL", "SQL", "Vector Databases", "ChromaDB"],
   },
   {
     title: "Cloud / DevOps",
@@ -180,7 +204,7 @@ export const experience: ExperienceEntry[] = [
     role: "AI Automation Engineer",
     company: "Modi Enterprise",
     location: "New Delhi · Group operations",
-    period: "Jul 2025 — Present",
+    period: "Sep 2025 — Present",
     group: ["Colorbar", "Godfrey Phillips", "Modicare", "Indofil Industries"],
     bullets: [
       "Designed and deployed AI automation pipelines for firewall log analysis and customer feedback processing using Python and LangChain-based LLM workflows.",
@@ -189,20 +213,30 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
-    role: "Data Science Intern",
+    role: "Data Scientist",
     company: "Pinnacle Corporation",
     location: "Remote",
-    period: "Jan 2025 — Apr 2025",
+    period: "Mar 2025 — Sep 2025",
     bullets: [
       "Developed ML models for clustering and forecasting on sales and healthcare datasets using Python and scikit-learn.",
       "Built end-to-end data pipelines including preprocessing, feature engineering, model training and reporting automation.",
     ],
   },
   {
-    role: "SQL Developer Intern",
+    role: "Machine Learning Engineer",
+    company: "Cognifyz Technologies",
+    location: "Remote",
+    period: "Jul 2024 — Aug 2024",
+    bullets: [
+      "Built a content-based restaurant recommendation system over a 9,500+ restaurant dataset using TF-IDF vectorization and cosine similarity to surface similar venues from user preferences.",
+      "Engineered the feature pipeline and evaluation in Python with Pandas and scikit-learn, from data cleaning through similarity scoring.",
+    ],
+  },
+  {
+    role: "Internship Trainee",
     company: "Amar Ujala",
-    location: "Noida",
-    period: "Jul 2023 — Aug 2023",
+    location: "Meerut",
+    period: "Jul 2023",
     bullets: [
       "Developed optimized SQL queries and automated reporting pipelines for internal dashboards, improving data accuracy and reducing manual reporting.",
     ],
@@ -235,7 +269,8 @@ export const education: EducationEntry[] = [
     years: "2022 — 2025",
     title: "B.Tech · Electronics & Communication",
     institution: "Deenbandhu Chhotu Ram University of Science & Technology (DCRUST)",
-    meta: "Murthal, Sonipat · Honors in Artificial Intelligence & Machine Learning",
+    meta: "Murthal, Sonipat",
+    honors: "Honours in Artificial Intelligence & Machine Learning",
   },
   {
     years: "2019 — 2022",
@@ -250,6 +285,7 @@ export const achievements: Achievement[] = [
     glyph: "🏅",
     title: "SQL Gold Badge",
     description: "HackerRank — advanced SQL problem-solving",
+    href: "https://www.hackerrank.com/sushantzd",
   },
   {
     glyph: "🎓",
