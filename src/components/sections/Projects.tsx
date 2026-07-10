@@ -65,8 +65,8 @@ export default function Projects() {
         </motion.h2>
 
         <motion.p className="section-sub" {...revealProps(2)}>
-          Production AI pipelines — from security log intelligence to
-          retrieval-augmented knowledge.
+          From production AI pipelines to full-stack platforms and native mobile —
+          systems shipped end-to-end.
         </motion.p>
 
         <div className="proj-grid">
@@ -120,7 +120,10 @@ function ProjectCard({ project, tiltEnabled, revealProps }: ProjectCardProps) {
       {...revealProps}
     >
       <div className="proj-orb" aria-hidden="true" />
-      <span className="proj-num">{project.number}</span>
+      <div className="proj-head">
+        <span className="proj-num">{project.number}</span>
+        {project.tag && <span className="proj-tag">{project.tag}</span>}
+      </div>
       <h3>{project.title}</h3>
       <p>{project.description}</p>
       <div className="proj-tech">
@@ -131,12 +134,18 @@ function ProjectCard({ project, tiltEnabled, revealProps }: ProjectCardProps) {
         ))}
       </div>
       <div className="proj-links">
-        <a href={project.github} target="_blank" rel="noopener noreferrer" data-cursor>
-          ◔ GitHub
-        </a>
-        <a href={project.caseStudy ?? "#"} data-cursor>
-          Case study →
-        </a>
+        {project.github ? (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" data-cursor>
+            ◔ GitHub
+          </a>
+        ) : (
+          <span className="proj-private">🔒 Private · NDA</span>
+        )}
+        {project.caseStudy && (
+          <a href={project.caseStudy} data-cursor>
+            Case study →
+          </a>
+        )}
       </div>
     </motion.article>
   );

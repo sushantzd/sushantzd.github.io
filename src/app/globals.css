@@ -1279,3 +1279,25 @@ footer .mono {
     grid-template-columns: 1fr;
   }
 }
+.proj-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.proj-tag {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(56, 232, 255, 0.08);
+  border: 1px solid rgba(56, 232, 255, 0.2);
+}
+.proj-private {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-low);
+}

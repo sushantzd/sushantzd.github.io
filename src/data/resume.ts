@@ -303,6 +303,46 @@ export const projects: Project[] = [
     github: "https://github.com/sushantzd",
     caseStudy: "#",
   },
+  {
+    number: "03",
+    title: "Enterprise Payment Reconciliation Platform",
+    description:
+      "A Next.js platform that ingests monthly payment-gateway data (80K+ row Excel files), runs multi-module SQL reconciliation across wallets, invoices and settlements, and streams live run status with exportable reports and dashboards.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind", "MSSQL", "NextAuth", "Recharts", "ExcelJS"],
+    tag: "Enterprise · Private",
+  },
+  {
+    number: "04",
+    title: "Multi-Model Creative AI Studio",
+    description:
+      "A content-generation studio that orchestrates multiple LLMs (Azure OpenAI + Gemini) with load balancing to produce platform-specific marketing copy and AI imagery through an automated critique-and-refine loop.",
+    tech: ["React", "FastAPI", "SQLAlchemy", "Azure OpenAI", "Gemini", "Zustand", "TanStack Query"],
+    tag: "Client work",
+  },
+  {
+    number: "05",
+    title: "Role-Based Media Asset Platform",
+    description:
+      "A full-stack media library with granular role-based access control, JWT auth, server-side thumbnail and video processing (ffmpeg, sharp) and S3-backed delivery for large creative teams.",
+    tech: ["Vue 3", "Quasar", "Express", "MSSQL", "AWS S3", "JWT", "ffmpeg"],
+    tag: "Full-stack",
+  },
+  {
+    number: "06",
+    title: "Digital Signage Platform — Web CMS + Android Player",
+    description:
+      "An end-to-end signage system: a Flask CMS with 2FA, playlist scheduling and device-fleet monitoring, paired with a native Android (Jetpack Compose + ExoPlayer) kiosk player featuring offline caching and crash recovery.",
+    tech: ["Flask", "SQLite", "boto3", "Kotlin", "Jetpack Compose", "ExoPlayer", "WorkManager"],
+    tag: "Web + Mobile",
+  },
+  {
+    number: "07",
+    title: "Store Feedback Sentiment Intelligence",
+    description:
+      "An internal tool that analyzes customer comments per retail store and date, classifying sentiment and generating concise 3-line positive / negative summaries with NLP and LLM summarization.",
+    tech: ["Python", "NLP", "Sentiment Analysis", "LLM Summarization", "Pandas"],
+    tag: "Internal · Private",
+  },
 ];
 
 export const services: ServiceEntry[] = [
