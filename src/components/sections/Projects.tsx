@@ -55,7 +55,7 @@ export default function Projects() {
     <section id="projects">
       <div className="wrap">
         <motion.div className="eyebrow" {...revealProps(0)}>
-          <span className="mono idx">05</span>
+          <span className="mono idx">06</span>
           <span className="mono">/ Selected Work</span>
           <span className="line" />
         </motion.div>
@@ -65,7 +65,7 @@ export default function Projects() {
         </motion.h2>
 
         <motion.p className="section-sub" {...revealProps(2)}>
-          From production AI pipelines to full-stack platforms and native mobile —
+          From production AI pipelines to full-stack platforms and internal tools —
           systems shipped end-to-end.
         </motion.p>
 
@@ -119,7 +119,6 @@ function ProjectCard({ project, tiltEnabled, revealProps }: ProjectCardProps) {
       onMouseLeave={tiltEnabled ? handleLeave : undefined}
       {...revealProps}
     >
-      <div className="proj-orb" aria-hidden="true" />
       <div className="proj-head">
         <span className="proj-num">{project.number}</span>
         {project.tag && <span className="proj-tag">{project.tag}</span>}

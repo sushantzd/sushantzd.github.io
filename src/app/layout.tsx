@@ -11,7 +11,7 @@ const SITE_URL = "https://sushantzd.github.io";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Sushant Choudhary — AI & Full-Stack Engineer | Freelance",
-  description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps and native mobile. Available for freelance projects.",
+  description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps, automation and dashboards. Available for freelance projects.",
   keywords: [
     "AI Engineer",
     "Machine Learning",
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     title: "Sushant Choudhary — AI & Full-Stack Engineer | Freelance",
-    description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps and native mobile. Available for freelance projects.",
+    description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps, automation and dashboards. Available for freelance projects.",
     siteName: "Sushant Choudhary — SYNAPSE",
   },
   twitter: {
     card: "summary_large_image",
     title: "Sushant Choudhary — AI & Full-Stack Engineer | Freelance",
-    description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps and native mobile. Available for freelance projects.",
+    description: "Freelance AI & full-stack engineer. I ship complete products — LLM systems, RAG pipelines, full-stack web apps, automation and dashboards. Available for freelance projects.",
   },
   robots: { index: true, follow: true },
 };

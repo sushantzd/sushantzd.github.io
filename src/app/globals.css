@@ -329,7 +329,7 @@ section {
   }
 }
 .hero h1 {
-  font-size: clamp(3.2rem, 10vw, 8.4rem);
+  font-size: clamp(3rem, 8.2vw, 7rem);
   font-weight: 600;
   letter-spacing: -0.035em;
   margin-bottom: 8px;
@@ -1205,10 +1205,24 @@ footer .mono {
 }
 
 @media (max-width: 560px) {
-  /* CTAs stretch full-width and centre their label on narrow screens */
+  /* Stack CTAs full-width so the pill buttons never collapse into circles */
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .cta-row .btn {
-    flex: 1;
+    width: 100%;
     justify-content: center;
+  }
+  /* Tighten the hero kickers so they don't wrap into ragged lines */
+  .hero-badge {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 6px 12px;
+  }
+  .hero .role {
+    letter-spacing: 0.18em;
+    font-size: 0.66rem;
   }
   .skills-grid {
     grid-template-columns: 1fr;
@@ -1277,6 +1291,13 @@ footer .mono {
 @media (max-width: 640px) {
   .services-grid {
     grid-template-columns: 1fr;
+  }
+  /* Tighten the generous desktop section rhythm on phones — the default
+     clamp(90px, 12vh, 150px) top+bottom stacks to ~220px of empty space
+     between sections on a ~930px-tall viewport, which reads as dead space. */
+  section {
+    padding-top: clamp(52px, 9vh, 76px);
+    padding-bottom: clamp(52px, 9vh, 76px);
   }
 }
 .proj-head {

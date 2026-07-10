@@ -153,7 +153,7 @@ export const skills: SkillGroup[] = [
     title: "Languages",
     glyph: "⌘",
     icon: "Command",
-    items: ["Python", "SQL", "JavaScript", "TypeScript", "Kotlin"],
+    items: ["Python", "SQL", "JavaScript", "TypeScript"],
   },
   {
     title: "AI / ML",
@@ -197,12 +197,6 @@ export const skills: SkillGroup[] = [
     glyph: "⚡",
     icon: "Zap",
     items: ["FastAPI", "Node.js", "Express", "Flask", "REST APIs", "NextAuth", "Streamlit"],
-  },
-  {
-    title: "Mobile",
-    glyph: "▢",
-    icon: "Smartphone",
-    items: ["Kotlin", "Android", "Jetpack Compose", "ExoPlayer"],
   },
   {
     title: "ML Frameworks",
@@ -368,11 +362,11 @@ export const services: ServiceEntry[] = [
       "Workflow automation, data pipelines, reconciliation systems and reporting that remove hours of manual work.",
   },
   {
-    title: "Mobile & Signage",
-    glyph: "▢",
-    icon: "Smartphone",
+    title: "Dashboards & Internal Tools",
+    glyph: "▦",
+    icon: "LayoutGrid",
     description:
-      "Native Android apps and digital-signage platforms — web CMS plus on-device players with offline support.",
+      "Reporting dashboards, admin panels, CMS and role-based internal tools — including content and digital-signage platforms — that teams rely on daily.",
   },
 ];
 
@@ -413,6 +407,12 @@ export const achievements: Achievement[] = [
     title: "SQL Gold Badge",
     description: "HackerRank — advanced SQL problem-solving",
     href: "https://www.hackerrank.com/sushantzd",
+  },
+  {
+    glyph: "🐍",
+    title: "Python (Basic) Certificate",
+    description: "HackerRank — verified Python proficiency",
+    href: "https://www.hackerrank.com/certificates/485824bc5ef9",
   },
   {
     glyph: "🎓",

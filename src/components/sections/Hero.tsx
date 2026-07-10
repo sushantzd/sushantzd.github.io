@@ -72,8 +72,8 @@ export default function Hero() {
 
         <motion.p className="lead" variants={reduced ? undefined : item}>
           I design and ship <b>complete products</b> — <b>AI systems</b>, <b>full-stack web apps</b>{" "}
-          and <b>native mobile</b> — from LLM automation and RAG pipelines to enterprise dashboards
-          and digital-signage platforms.
+          and <b>automation</b> — from LLM pipelines and RAG to enterprise dashboards, reconciliation
+          systems and content platforms.
         </motion.p>
 
         <motion.div className="cta-row" variants={reduced ? undefined : item}>

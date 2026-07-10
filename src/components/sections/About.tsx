@@ -74,9 +74,9 @@ export default function About() {
             I build production AI in enterprise operations — automating log intelligence, customer
             feedback processing and real-time alerting — and I ship the full product around it:{" "}
             <span className="hl">React / Next.js front-ends, FastAPI and Node back-ends</span>,{" "}
-            <span className="hl">SQL data platforms</span> and even{" "}
-            <span className="hl">native Android</span>. Available for <span className="hl">freelance</span>{" "}
-            projects end-to-end.
+            <span className="hl">SQL data platforms</span> and{" "}
+            <span className="hl">reporting dashboards</span>. Available for{" "}
+            <span className="hl">freelance</span> projects end-to-end.
           </motion.p>
         </div>
 

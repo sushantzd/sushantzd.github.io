@@ -59,7 +59,7 @@ export default function Skills() {
 
         <motion.p className="section-sub" {...revealProps(2)}>
           A full-spectrum toolkit — from LLM orchestration, RAG and computer vision to full-stack
-          web, native mobile and production backends.
+          web, data platforms and production backends.
         </motion.p>
 
         <div className="skills-grid">

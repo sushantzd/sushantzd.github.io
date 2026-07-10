@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, personal } from "@/data/resume";
 
@@ -8,10 +9,22 @@ import { navLinks, personal } from "@/data/resume";
  * Fixed glass navbar. Gains a `.scrolled` state past 40px of scroll.
  * On >900px the links render inline; below that a hamburger toggles a
  * slide-in glass panel animated with framer-motion.
+ *
+ * The mobile menu (overlay + slide-in panel) is rendered through a portal to
+ * <body> rather than inside <nav>. This is deliberate: `.nav.scrolled` applies
+ * `backdrop-filter`, and per the CSS spec an element with backdrop-filter (like
+ * transform/filter) becomes the containing block for its `position: fixed`
+ * descendants. If the menu lived inside <nav>, opening it while scrolled would
+ * collapse the full-screen overlay/panel into the ~54px navbar box. The portal
+ * keeps them fixed to the viewport in every scroll state.
  */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Portals need the DOM; only render the portal after mount (client-side).
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -33,94 +46,93 @@ export default function Navbar() {
 
   const closeMenu = () => setOpen(false);
 
-  return (
-    <nav className={scrolled ? "nav scrolled" : "nav"}>
-      <a href="#hero" className="brand" data-cursor onClick={closeMenu}>
-        <span className="mark">SC</span> {personal.name}
-      </a>
-
-      {/* Desktop links (inline flex ≥901px; hidden ≤900px via CSS) */}
-      <div className="nav-links" data-desktop>
-        {navLinks.map((link) => (
-          <a key={link.href} href={link.href} data-cursor>
-            {link.label}
-          </a>
-        ))}
-        <a href={personal.resumeUrl} className="btn-nav" data-cursor download>
-          Résumé ↓
-        </a>
-      </div>
-
-      {/* Mobile hamburger */}
-      <button
-        className="nav-toggle"
-        aria-label={open ? "Close menu" : "Open menu"}
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-      >
-        <span
-          style={
-            open
-              ? { transform: "translateY(7px) rotate(45deg)" }
-              : undefined
-          }
-        />
-        <span style={open ? { opacity: 0 } : undefined} />
-        <span
-          style={
-            open
-              ? { transform: "translateY(-7px) rotate(-45deg)" }
-              : undefined
-          }
-        />
-      </button>
-
-      {/* Mobile slide-in menu */}
-      <AnimatePresence>
-        {open && (
-          <>
-            <motion.div
-              className="nav-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={closeMenu}
-              style={{
-                position: "fixed",
-                inset: 0,
-                zIndex: 1001,
-                background: "rgba(5,6,11,.55)",
-                backdropFilter: "blur(2px)",
-              }}
-              aria-hidden="true"
-            />
-            <motion.div
-              className="nav-links open"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.45 }}
-              style={{ zIndex: 1002 }}
-            >
-              {navLinks.map((link) => (
-                <a key={link.href} href={link.href} data-cursor onClick={closeMenu}>
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href={personal.resumeUrl}
-                className="btn-nav"
-                data-cursor
-                download
-                onClick={closeMenu}
-              >
-                Résumé ↓
+  const menu = (
+    <AnimatePresence>
+      {open && (
+        <>
+          <motion.div
+            className="nav-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={closeMenu}
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 1001,
+              background: "rgba(5,6,11,.55)",
+              backdropFilter: "blur(2px)",
+            }}
+            aria-hidden="true"
+          />
+          <motion.div
+            className="nav-links open"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.45 }}
+            style={{ zIndex: 1002 }}
+          >
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} data-cursor onClick={closeMenu}>
+                {link.label}
               </a>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </nav>
+            ))}
+            <a
+              href={personal.resumeUrl}
+              className="btn-nav"
+              data-cursor
+              download
+              onClick={closeMenu}
+            >
+              Résumé ↓
+            </a>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+
+  return (
+    <>
+      <nav className={scrolled ? "nav scrolled" : "nav"}>
+        <a href="#hero" className="brand" data-cursor onClick={closeMenu}>
+          <span className="mark">SC</span> {personal.name}
+        </a>
+
+        {/* Desktop links (inline flex ≥901px; hidden ≤900px via CSS) */}
+        <div className="nav-links" data-desktop>
+          {navLinks.map((link) => (
+            <a key={link.href} href={link.href} data-cursor>
+              {link.label}
+            </a>
+          ))}
+          <a href={personal.resumeUrl} className="btn-nav" data-cursor download>
+            Résumé ↓
+          </a>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="nav-toggle"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <span
+            style={open ? { transform: "translateY(7px) rotate(45deg)" } : undefined}
+          />
+          <span style={open ? { opacity: 0 } : undefined} />
+          <span
+            style={open ? { transform: "translateY(-7px) rotate(-45deg)" } : undefined}
+          />
+        </button>
+      </nav>
+
+      {/* Portalled to <body> — escapes the navbar's backdrop-filter containing
+          block so the fixed overlay/panel always fill the viewport. */}
+      {mounted && createPortal(menu, document.body)}
+    </>
   );
 }
