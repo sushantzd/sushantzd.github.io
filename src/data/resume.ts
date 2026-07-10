@@ -376,6 +376,21 @@ export const services: ServiceEntry[] = [
   },
 ];
 
+/**
+ * Testimonials render ONLY when this array is non-empty — no placeholder
+ * quotes ship to production. Add real quotes here to switch the section on,
+ * e.g.:
+ *   {
+ *     quote: "Sushant shipped our reconciliation portal weeks ahead of schedule.",
+ *     name: "Jane Doe",
+ *     role: "Finance Lead",
+ *     company: "Acme Retail",
+ *   }
+ * When you enable this, renumber section eyebrows: Testimonials 07, Education 08,
+ * Achievements 09, Contact 10 (see the plan's numbering note).
+ */
+export const testimonials: Testimonial[] = [];
+
 export const education: EducationEntry[] = [
   {
     years: "2022 — 2025",

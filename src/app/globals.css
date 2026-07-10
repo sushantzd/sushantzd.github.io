@@ -1301,3 +1301,44 @@ footer .mono {
   font-size: 0.78rem;
   color: var(--ink-low);
 }
+
+/* ============================================================
+   Testimonials
+   ============================================================ */
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 44px;
+}
+.testimonial {
+  padding: 30px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.testimonial blockquote {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-hi);
+}
+.testimonial figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.testimonial .t-name {
+  font-weight: 600;
+  color: var(--ink-hi);
+}
+.testimonial .t-role {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-low);
+}
+@media (max-width: 1024px) {
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+}
