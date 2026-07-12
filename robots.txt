@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://sushantzd.github.io
+Sitemap: https://sushantzd.github.io/sitemap.xml
