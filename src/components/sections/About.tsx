@@ -33,6 +33,39 @@ const reveal: Variants = {
   }),
 };
 
+/** Frame flip: turned ~30° on the Y axis → flat, as it scrolls in. */
+const flipFrame: Variants = {
+  hidden: { rotateY: -30, opacity: 0 },
+  show: {
+    rotateY: 0,
+    opacity: 1,
+    transition: { duration: 0.7, ease: EASE },
+  },
+};
+
+/** Image "develops": dim + blurred → sharp, trailing the flip slightly. */
+const develop: Variants = {
+  hidden: {
+    filter: "blur(14px) saturate(0.7) contrast(1.03) brightness(0.55)",
+    scale: 1.06,
+  },
+  show: {
+    filter: "blur(0px) saturate(0.92) contrast(1.03) brightness(0.98)",
+    scale: 1,
+    transition: { duration: 0.9, ease: "easeOut", delay: 0.12 },
+  },
+};
+
+/** Faint diagonal light-sweep across the glass once, as it lands. */
+const glint: Variants = {
+  hidden: { x: "-120%", opacity: 0 },
+  show: {
+    x: "120%",
+    opacity: [0, 1, 0],
+    transition: { duration: 0.9, ease: "easeOut", delay: 0.4 },
+  },
+};
+
 export default function About() {
   const reduced = usePrefersReducedMotion();
 
@@ -42,6 +75,16 @@ export default function About() {
       : {
           variants: reveal,
           custom: i,
+          initial: "hidden" as const,
+          whileInView: "show" as const,
+          viewport: { once: true, margin: "0px 0px -8% 0px" },
+        };
+
+  const motionProps = (variants: Variants) =>
+    reduced
+      ? {}
+      : {
+          variants,
           initial: "hidden" as const,
           whileInView: "show" as const,
           viewport: { once: true, margin: "0px 0px -8% 0px" },
@@ -80,19 +123,33 @@ export default function About() {
           </motion.p>
         </div>
 
-        <motion.div className="stats" {...revealProps(2)}>
-          {stats.map((stat) => (
-            <div className="stat glass" key={stat.label}>
-              <StatNumber
-                target={stat.target}
-                decimals={stat.decimals}
-                suffix={stat.suffix}
-                reduced={reduced}
-              />
-              <div className="lbl">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        <div className="about-aside">
+          <motion.figure className="about-photo glass" {...motionProps(flipFrame)}>
+            <motion.img
+              src="/about-portrait.jpg"
+              alt="Sushant Choudhary"
+              width={1600}
+              height={1200}
+              loading="lazy"
+              {...motionProps(develop)}
+            />
+            <motion.span className="glint" aria-hidden="true" {...motionProps(glint)} />
+          </motion.figure>
+
+          <motion.div className="stats" {...revealProps(2)}>
+            {stats.map((stat) => (
+              <div className="stat glass" key={stat.label}>
+                <StatNumber
+                  target={stat.target}
+                  decimals={stat.decimals}
+                  suffix={stat.suffix}
+                  reduced={reduced}
+                />
+                <div className="lbl">{stat.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

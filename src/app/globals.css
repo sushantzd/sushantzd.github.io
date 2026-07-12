@@ -434,6 +434,58 @@ section {
   line-height: 1.4;
 }
 
+/* About portrait — framed to match the glass stat cards, graded to sit in
+   the dark/cyan theme instead of reading as a raw phone photo. */
+.about-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  perspective: 1200px;
+}
+.about-photo {
+  position: relative;
+  margin: 0;
+  padding: 7px;
+  border-radius: 18px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+.about-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 32%;
+  border-radius: 12px;
+  filter: saturate(0.92) contrast(1.03) brightness(0.98);
+}
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 12px;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(56, 232, 255, 0.05) 0%,
+    transparent 40%,
+    rgba(4, 10, 20, 0.42) 100%
+  );
+}
+.about-photo .glint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 48%,
+    transparent 62%
+  );
+}
+
 /* ============================================================
    Skills
    ============================================================ */
